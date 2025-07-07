@@ -1,10 +1,10 @@
 <template>
-    <div class="p-8">
+    <div class="p-8 space-y-6 max-w-xl mx-auto">
         <h1 class="text-3xl font-bold mb-6">Banner Renderer</h1>
 
         <!-- Выбор шаблона -->
 
-        <div class="mb-6 max-w-xs">
+        <div class="mb-6">
             <USelect
                 v-model="selectedTemplateFile"
                 :items="templateOptions"
@@ -13,21 +13,31 @@
         </div>
 
         <div class="flex gap-4 mb-6">
-            <UButton color="primary" @click="startRender" :loading="loading">
+            <!-- <UButton color="primary" @click="startRender" :loading="loading">
                 {{ loading ? "Rendering…" : "StartRender" }}
+            </UButton> -->
+
+            <UButton
+                color="primary"
+                block
+                @click="downloadArchive"
+                :loading="archiveLoading"
+            >
+                {{ archiveLoading ? "Rendering..." : "Start render" }}
             </UButton>
 
             <UButton
                 color="gray"
-                @click="downloadArchive"
-                :loading="archiveLoading"
+                variant="outline"
+                @click="openTemplateInNewWindow"
+                :disabled="!templateContent"
             >
-                {{ archiveLoading ? "Создание архива…" : "Скачать архив" }}
+                Открыть шаблон в новом окне
             </UButton>
         </div>
 
         <!-- Категории: горизонталь, вертикаль, квадрат -->
-        <div class="mt-8 space-y-6 max-w-xs">
+        <div class="mt-8">
             <div v-for="cat in categories" :key="cat.id" class="w-full">
                 <UCard
                     :ui="{ slots: { body: 'p-0 sm:p-0' } }"
@@ -269,6 +279,38 @@ async function downloadArchive() {
         console.error(e);
     } finally {
         archiveLoading.value = false;
+    }
+}
+
+function openTemplateInNewWindow() {
+    if (!templateContent.value) {
+        toast.add({
+            title: "Шаблон не загружен",
+            icon: "i-heroicons-exclamation-triangle",
+            color: "red",
+        });
+        return;
+    }
+
+    // Создаем новое окно с HTML-шаблоном
+    const newWindow = window.open(
+        "",
+        "_blank",
+        "width=800,height=600,scrollbars=yes,resizable=yes"
+    );
+
+    if (newWindow) {
+        newWindow.document.write(templateContent.value);
+        newWindow.document.close();
+        newWindow.focus();
+    } else {
+        toast.add({
+            title: "Не удалось открыть новое окно",
+            description:
+                "Возможно, блокировщик всплывающих окон заблокировал открытие",
+            icon: "i-heroicons-exclamation-triangle",
+            color: "red",
+        });
     }
 }
 </script>

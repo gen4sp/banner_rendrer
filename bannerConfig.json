@@ -19,18 +19,18 @@
             "platform": "Facebook"
         },
         {
-            "name": "instagram-square",
+            "name": "square-1080",
             "width": 1080,
             "height": 1080,
             "category": "social",
-            "platform": "Instagram"
+            "platform": "Instagram/LinkedIn/Twitter"
         },
         {
-            "name": "instagram-story",
+            "name": "story-vertical",
             "width": 1080,
             "height": 1920,
             "category": "social",
-            "platform": "Instagram"
+            "platform": "Instagram/TikTok/Snapchat"
         },
         {
             "name": "instagram-portrait",
@@ -40,18 +40,11 @@
             "platform": "Instagram"
         },
         {
-            "name": "linkedin",
+            "name": "social-cover",
             "width": 1200,
             "height": 628,
             "category": "social",
-            "platform": "LinkedIn"
-        },
-        {
-            "name": "linkedin-square",
-            "width": 1080,
-            "height": 1080,
-            "category": "social",
-            "platform": "LinkedIn"
+            "platform": "LinkedIn/Facebook"
         },
         {
             "name": "twitter-post",
@@ -59,20 +52,6 @@
             "height": 900,
             "category": "social",
             "platform": "Twitter"
-        },
-        {
-            "name": "twitter-square",
-            "width": 1080,
-            "height": 1080,
-            "category": "social",
-            "platform": "Twitter"
-        },
-        {
-            "name": "tiktok",
-            "width": 1080,
-            "height": 1920,
-            "category": "social",
-            "platform": "TikTok"
         },
         {
             "name": "pinterest-square",
@@ -96,18 +75,11 @@
             "platform": "YouTube"
         },
         {
-            "name": "snapchat",
-            "width": 1080,
-            "height": 1920,
-            "category": "social",
-            "platform": "Snapchat"
-        },
-        {
             "name": "medium-rectangle",
             "width": 300,
             "height": 250,
             "category": "web",
-            "platform": "Google Ads"
+            "platform": "Google Ads/Mobile"
         },
         {
             "name": "large-rectangle",
@@ -121,7 +93,7 @@
             "width": 728,
             "height": 90,
             "category": "web",
-            "platform": "Google Ads"
+            "platform": "Google Ads/Web"
         },
         {
             "name": "large-leaderboard",
@@ -184,7 +156,7 @@
             "width": 468,
             "height": 60,
             "category": "web",
-            "platform": "Google Ads"
+            "platform": "Google Ads/Web"
         },
         {
             "name": "half-banner",
@@ -215,32 +187,11 @@
             "platform": "Mobile"
         },
         {
-            "name": "mobile-medium",
-            "width": 300,
-            "height": 250,
-            "category": "mobile",
-            "platform": "Mobile"
-        },
-        {
             "name": "mobile-portrait",
             "width": 320,
             "height": 480,
             "category": "mobile",
             "platform": "Mobile"
-        },
-        {
-            "name": "facebook-cover",
-            "width": 1200,
-            "height": 628,
-            "category": "social",
-            "platform": "Facebook"
-        },
-        {
-            "name": "facebook-event",
-            "width": 1200,
-            "height": 628,
-            "category": "social",
-            "platform": "Facebook"
         },
         {
             "name": "instagram-landscape",
@@ -271,13 +222,6 @@
             "platform": "YouTube"
         },
         {
-            "name": "super-banner",
-            "width": 728,
-            "height": 90,
-            "category": "web",
-            "platform": "Web"
-        },
-        {
             "name": "popup",
             "width": 550,
             "height": 480,
@@ -306,13 +250,6 @@
             "platform": "Web"
         },
         {
-            "name": "full-banner",
-            "width": 468,
-            "height": 60,
-            "category": "web",
-            "platform": "Web"
-        },
-        {
             "name": "panorama",
             "width": 980,
             "height": 120,
@@ -332,13 +269,6 @@
             "height": 627,
             "category": "native",
             "platform": "Native"
-        },
-        {
-            "name": "interstitial",
-            "width": 320,
-            "height": 480,
-            "category": "mobile",
-            "platform": "Mobile"
         },
         {
             "name": "rewarded-video",
