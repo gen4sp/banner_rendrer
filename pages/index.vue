@@ -6,14 +6,7 @@
             {{ loading ? "Rendering…" : "StartRender" }}
         </UButton>
 
-        <div v-if="result?.length" class="mt-8">
-            <h2 class="text-xl font-semibold mb-2">Готово!</h2>
-            <ul>
-                <li v-for="item in result" :key="item.path">
-                    {{ item.name }} → {{ item.path }}
-                </li>
-            </ul>
-        </div>
+        <Preview v-if="result?.length" :items="result" class="mt-8" />
     </div>
 </template>
 

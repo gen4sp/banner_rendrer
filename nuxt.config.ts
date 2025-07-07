@@ -1,10 +1,8 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-    modules: ["@nuxthq/ui"],
-    ui: {
-        /* Опции UI можно настроить при необходимости */
-    },
+    modules: ["@nuxt/ui"],
+    css: ["~/assets/css/main.css"],
     nitro: {
         preset: "node",
     },
