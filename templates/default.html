@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Banner Template</title>
+        <style>
+            :root {
+                --diamond-size: 50vmin; /* 70% от минимального размера вьюпорта */
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body {
+                height: 100%;
+                width: 100%;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+                position: relative;
+                overflow: hidden;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+
+            /* Ромб */
+            .diamond {
+                width: var(--diamond-size);
+                height: var(--diamond-size);
+                background: rgba(255, 255, 255, 0.8);
+                transform: rotate(45deg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Прямоугольники */
+            .rect {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 1200px;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(4px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #333;
+            }
+
+            .rect.top {
+                top: 5%;
+            }
+
+            .rect.bottom {
+                bottom: 5%;
+            }
+
+            /* Адаптивные правки */
+            @media (max-width: 600px) {
+                :root {
+                    --diamond-size: 50vmin;
+                }
+
+                .rect {
+                    height: 40px;
+                }
+            }
+
+            /* Переставляем прямоугольники по вертикальным краям при горизонтальной ориентации */
+            @media (orientation: landscape) {
+                .rect {
+                    /* Меняем ориентацию прямоугольников */
+                    width: 60px;
+                    height: 90%;
+                    top: 50%;
+                    left: auto;
+                    right: auto;
+                    transform: translateY(-50%);
+                }
+
+                .rect.top {
+                    left: 5%;
+                    top: 50%;
+                }
+
+                .rect.bottom {
+                    right: 5%;
+                    top: 50%;
+                    bottom: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rect top">ТАЙТЛ</div>
+
+        <div class="diamond"><!-- Содержимое ромба при необходимости --></div>
+
+        <div class="rect bottom">ЛОГОТИП</div>
+    </body>
+</html>

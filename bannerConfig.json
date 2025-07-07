@@ -8,7 +8,7 @@
     },
     "sizes": [
         { "name": "linkedin", "width": 1200, "height": 628 },
-        { "name": "instagram", "width": 1080, "height": 1080 },
+        { "name": "instagram", "width": 628, "height": 1200 },
         { "name": "facebook", "width": 1200, "height": 1200 }
     ]
 }

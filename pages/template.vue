@@ -6,7 +6,7 @@
             height: `${height}px`,
         }"
     >
-        <img class="layer" :src="back" alt="back" />
+        <img class="layer" :src="back" alt="back" />=
         <img class="layer" :src="main" alt="main" />
         <img class="layer" :src="logo1" alt="logo1" />
         <img class="layer" :src="logo2" alt="logo2" />

@@ -6,7 +6,7 @@ export default defineEventHandler(async () => {
     const configPath = resolve(process.cwd(), "bannerConfig.json");
     const data = JSON.parse(readFileSync(configPath, "utf-8"));
 
-    const outputDir = resolve(process.cwd(), "output");
+    const outputDir = resolve(process.cwd(), "public", "output");
     mkdirSync(outputDir, { recursive: true });
 
     const browser = await puppeteer.launch({
@@ -39,7 +39,10 @@ export default defineEventHandler(async () => {
         const filepath = resolve(outputDir, filename);
         writeFileSync(filepath, buffer);
 
-        results.push({ name: size.name ?? filename, path: filepath });
+        results.push({
+            name: size.name ?? filename,
+            path: `/output/${filename}`,
+        });
     }
 
     await browser.close();
