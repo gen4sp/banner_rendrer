@@ -71,7 +71,18 @@ async function startRender() {
     loading.value = true;
     result.value = null;
     try {
-        result.value = await $fetch("/api/render", { method: "POST" });
+        // Отправляем HTML-шаблон и размеры на серверный эндпоинт
+        result.value = await $fetch("/api/render", {
+            method: "POST",
+            body: {
+                html: defaultTemplate,
+                sizes: sizes.value,
+            },
+        });
+
+        // Логируем результат в консоль для отладки
+        console.log("Render result:", result.value);
+
         toast.add({
             title: "Рендер завершён",
             icon: "i-heroicons-check-circle",
