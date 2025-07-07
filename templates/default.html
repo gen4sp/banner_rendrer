@@ -39,11 +39,12 @@
             .diamond {
                 width: var(--diamond-size);
                 height: var(--diamond-size);
-                background: rgba(255, 255, 255, 0.8);
+                background: rgba(255, 255, 255, 1);
                 transform: rotate(45deg);
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                z-index: 2; /* Ромб выше прямоугольников */
             }
 
             /* Прямоугольники */
@@ -56,6 +57,7 @@
                 height: 60px;
                 background: rgba(255, 255, 255, 0.5);
                 backdrop-filter: blur(4px);
+                z-index: 1; /* Ниже ромба */
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -87,9 +89,10 @@
             /* Переставляем прямоугольники по вертикальным краям при горизонтальной ориентации */
             @media (orientation: landscape) {
                 .rect {
-                    /* Меняем ориентацию прямоугольников */
-                    width: 60px;
-                    height: 90%;
+                    /* Горизонтальный экран: прямоугольники по бокам,
+                       но высотой в одну строку */
+                    width: 150px;
+                    height: 60px;
                     top: 50%;
                     left: auto;
                     right: auto;
