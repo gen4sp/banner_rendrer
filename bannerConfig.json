@@ -1,0 +1,14 @@
+{
+    "template": "/template",
+    "images": {
+        "back": "/images/back.png",
+        "main": "/images/main.png",
+        "logo1": "/images/logo1.png",
+        "logo2": "/images/logo2.png"
+    },
+    "sizes": [
+        { "name": "linkedin", "width": 1200, "height": 628 },
+        { "name": "instagram", "width": 1080, "height": 1080 },
+        { "name": "facebook", "width": 1200, "height": 1200 }
+    ]
+}

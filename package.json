@@ -1,0 +1,16 @@
+{
+    "name": "banner-renderer",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt dev",
+        "build": "nuxt build",
+        "start": "nuxt start"
+    },
+    "devDependencies": {
+        "@nuxthq/ui": "^2.7.0",
+        "nuxt": "^3.17.6"
+    },
+    "dependencies": {
+        "puppeteer": "^24.12.0"
+    }
+}
