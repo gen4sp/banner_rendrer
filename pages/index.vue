@@ -3,21 +3,31 @@
         <h1 class="text-3xl font-bold mb-6">Banner Renderer</h1>
 
         <!-- Выбор шаблона -->
+
         <div class="mb-6 max-w-xs">
             <USelect
                 v-model="selectedTemplateFile"
-                :options="templateOptions"
+                :items="templateOptions"
                 placeholder="Выберите шаблон"
-                :clearable="false"
             />
         </div>
 
-        <UButton color="primary" @click="startRender" :loading="loading">
-            {{ loading ? "Rendering…" : "StartRender" }}
-        </UButton>
+        <div class="flex gap-4 mb-6">
+            <UButton color="primary" @click="startRender" :loading="loading">
+                {{ loading ? "Rendering…" : "StartRender" }}
+            </UButton>
+
+            <UButton
+                color="gray"
+                @click="downloadArchive"
+                :loading="archiveLoading"
+            >
+                {{ archiveLoading ? "Создание архива…" : "Скачать архив" }}
+            </UButton>
+        </div>
 
         <!-- Категории: горизонталь, вертикаль, квадрат -->
-        <div class="mt-8 space-y-6">
+        <div class="mt-8 space-y-6 max-w-xs">
             <div v-for="cat in categories" :key="cat.id" class="w-full">
                 <UCard
                     :ui="{ slots: { body: 'p-0 sm:p-0' } }"
@@ -30,8 +40,7 @@
                             }}</span>
                             <USelect
                                 v-model="selectedSizes[cat.id]"
-                                :options="cat.sizeOptions"
-                                :clearable="false"
+                                :items="cat.sizeOptions"
                             />
                         </div>
                     </template>
@@ -67,6 +76,7 @@ type Size = { name: string; width: number; height: number };
 
 // Состояние загрузки
 const loading = ref(false);
+const archiveLoading = ref(false);
 
 // Результаты рендера
 const result = ref<{ name: string; path: string }[] | null>(null);
@@ -122,7 +132,7 @@ const templateOptions = computed(() =>
 );
 
 // Текущий выбранный файл шаблона
-const selectedTemplateFile = ref<string>(templateOptions.value[0]?.value ?? "");
+const selectedTemplateFile = ref<string>("");
 
 // Содержимое выбранного шаблона (HTML)
 const templateContent = ref<string>("");
@@ -151,8 +161,24 @@ watch(
     { immediate: true }
 );
 
+// Следим за изменениями в templateOptions и обновляем selectedTemplateFile
+watch(
+    templateOptions,
+    (options) => {
+        if (options.length > 0 && !selectedTemplateFile.value) {
+            selectedTemplateFile.value = options[0].value;
+        }
+    },
+    { immediate: true }
+);
+
 // Инициализируем выбранные размеры при монтировании
 onMounted(() => {
+    // Инициализируем выбранный шаблон
+    if (templateOptions.value.length > 0) {
+        selectedTemplateFile.value = templateOptions.value[0].value;
+    }
+
     categories.value.forEach((cat) => {
         if (cat.sizes.length) {
             selectedSizes[cat.id] = cat.sizes[0];
@@ -165,6 +191,9 @@ onMounted(() => {
 // @ts-ignore
 const toast = useToast();
 console.log("data", bannerConfig);
+console.log("templates", templates.value);
+console.log("templateOptions", templateOptions.value);
+
 async function startRender() {
     loading.value = true;
     result.value = null;
@@ -196,6 +225,50 @@ async function startRender() {
         console.error(e);
     } finally {
         loading.value = false;
+    }
+}
+
+async function downloadArchive() {
+    archiveLoading.value = true;
+    try {
+        const sizesForRender = Object.values(selectedSizes).filter(Boolean);
+
+        // Отправляем запрос с флагом downloadArchive
+        const response = await $fetch("/api/render", {
+            method: "POST",
+            body: {
+                html: templateContent.value,
+                sizes: sizesForRender,
+                downloadArchive: true,
+            },
+            responseType: "blob", // Получаем blob для скачивания
+        });
+
+        // Создаем ссылку для скачивания
+        const blob = new Blob([response as any], { type: "application/zip" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "banners.zip";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        toast.add({
+            title: "Архив скачан",
+            icon: "i-heroicons-arrow-down-tray",
+            color: "green",
+        });
+    } catch (e) {
+        toast.add({
+            title: "Ошибка создания архива",
+            icon: "i-heroicons-exclamation-triangle",
+            color: "red",
+        });
+        console.error(e);
+    } finally {
+        archiveLoading.value = false;
     }
 }
 </script>

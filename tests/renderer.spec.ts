@@ -34,6 +34,31 @@ describe("Renderer.render", () => {
         expect(results[0]).toStrictEqual({
             name: "banner-test",
             path: "/output/banner-test.png",
+            filePath: expectedFile,
         });
     }, 20000); // даём достаточно времени
+
+    it("создает архив с изображениями", async () => {
+        const html = readFileSync(templatePath, "utf8");
+
+        const sizes = [
+            { width: 1200, height: 630, name: "facebook" },
+            { width: 1080, height: 1080, name: "instagram" },
+        ];
+
+        const results = await Renderer.render(html, sizes, outputDir);
+
+        // Создаем архив
+        const archiveBuffer = await Renderer.createArchive(
+            results,
+            "test-banners"
+        );
+
+        // Проверяем, что архив создан и не пустой
+        expect(archiveBuffer).toBeInstanceOf(Buffer);
+        expect(archiveBuffer.length).toBeGreaterThan(0);
+
+        // Проверяем, что это валидный zip-файл (начинается с PK)
+        expect(archiveBuffer.slice(0, 2).toString()).toBe("PK");
+    }, 20000);
 });

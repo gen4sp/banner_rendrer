@@ -7,12 +7,373 @@
         "logo2": "/images/logo2.png"
     },
     "templates": [
-        { "name": "Default Orange Diamond", "file": "default.html" },
-        { "name": "Default White Diamond", "file": "default2.html" }
+        { "name": "Default Orange Diamond", "file": "default2.html" },
+        { "name": "Default White Diamond", "file": "default.html" }
     ],
     "sizes": [
-        { "name": "linkedin", "width": 1200, "height": 628 },
-        { "name": "instagram", "width": 628, "height": 1200 },
-        { "name": "facebook", "width": 1200, "height": 1200 }
+        {
+            "name": "facebook",
+            "width": 1200,
+            "height": 1200,
+            "category": "social",
+            "platform": "Facebook"
+        },
+        {
+            "name": "instagram-square",
+            "width": 1080,
+            "height": 1080,
+            "category": "social",
+            "platform": "Instagram"
+        },
+        {
+            "name": "instagram-story",
+            "width": 1080,
+            "height": 1920,
+            "category": "social",
+            "platform": "Instagram"
+        },
+        {
+            "name": "instagram-portrait",
+            "width": 1080,
+            "height": 1350,
+            "category": "social",
+            "platform": "Instagram"
+        },
+        {
+            "name": "linkedin",
+            "width": 1200,
+            "height": 628,
+            "category": "social",
+            "platform": "LinkedIn"
+        },
+        {
+            "name": "linkedin-square",
+            "width": 1080,
+            "height": 1080,
+            "category": "social",
+            "platform": "LinkedIn"
+        },
+        {
+            "name": "twitter-post",
+            "width": 1600,
+            "height": 900,
+            "category": "social",
+            "platform": "Twitter"
+        },
+        {
+            "name": "twitter-square",
+            "width": 1080,
+            "height": 1080,
+            "category": "social",
+            "platform": "Twitter"
+        },
+        {
+            "name": "tiktok",
+            "width": 1080,
+            "height": 1920,
+            "category": "social",
+            "platform": "TikTok"
+        },
+        {
+            "name": "pinterest-square",
+            "width": 1000,
+            "height": 1000,
+            "category": "social",
+            "platform": "Pinterest"
+        },
+        {
+            "name": "pinterest-vertical",
+            "width": 1000,
+            "height": 1500,
+            "category": "social",
+            "platform": "Pinterest"
+        },
+        {
+            "name": "youtube-thumbnail",
+            "width": 1280,
+            "height": 720,
+            "category": "social",
+            "platform": "YouTube"
+        },
+        {
+            "name": "snapchat",
+            "width": 1080,
+            "height": 1920,
+            "category": "social",
+            "platform": "Snapchat"
+        },
+        {
+            "name": "medium-rectangle",
+            "width": 300,
+            "height": 250,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "large-rectangle",
+            "width": 336,
+            "height": 280,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "leaderboard",
+            "width": 728,
+            "height": 90,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "large-leaderboard",
+            "width": 970,
+            "height": 90,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "billboard",
+            "width": 970,
+            "height": 250,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "half-page",
+            "width": 300,
+            "height": 600,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "wide-skyscraper",
+            "width": 160,
+            "height": 600,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "skyscraper",
+            "width": 120,
+            "height": 600,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "portrait",
+            "width": 300,
+            "height": 1050,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "square",
+            "width": 250,
+            "height": 250,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "small-square",
+            "width": 200,
+            "height": 200,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "banner",
+            "width": 468,
+            "height": 60,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "half-banner",
+            "width": 234,
+            "height": 60,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "vertical-banner",
+            "width": 120,
+            "height": 240,
+            "category": "web",
+            "platform": "Google Ads"
+        },
+        {
+            "name": "mobile-leaderboard",
+            "width": 320,
+            "height": 50,
+            "category": "mobile",
+            "platform": "Mobile"
+        },
+        {
+            "name": "large-mobile-banner",
+            "width": 320,
+            "height": 100,
+            "category": "mobile",
+            "platform": "Mobile"
+        },
+        {
+            "name": "mobile-medium",
+            "width": 300,
+            "height": 250,
+            "category": "mobile",
+            "platform": "Mobile"
+        },
+        {
+            "name": "mobile-portrait",
+            "width": 320,
+            "height": 480,
+            "category": "mobile",
+            "platform": "Mobile"
+        },
+        {
+            "name": "facebook-cover",
+            "width": 1200,
+            "height": 628,
+            "category": "social",
+            "platform": "Facebook"
+        },
+        {
+            "name": "facebook-event",
+            "width": 1200,
+            "height": 628,
+            "category": "social",
+            "platform": "Facebook"
+        },
+        {
+            "name": "instagram-landscape",
+            "width": 1080,
+            "height": 566,
+            "category": "social",
+            "platform": "Instagram"
+        },
+        {
+            "name": "linkedin-company",
+            "width": 1128,
+            "height": 191,
+            "category": "social",
+            "platform": "LinkedIn"
+        },
+        {
+            "name": "twitter-header",
+            "width": 1500,
+            "height": 500,
+            "category": "social",
+            "platform": "Twitter"
+        },
+        {
+            "name": "youtube-banner",
+            "width": 2560,
+            "height": 1440,
+            "category": "social",
+            "platform": "YouTube"
+        },
+        {
+            "name": "super-banner",
+            "width": 728,
+            "height": 90,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "popup",
+            "width": 550,
+            "height": 480,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "button-1",
+            "width": 120,
+            "height": 90,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "button-2",
+            "width": 120,
+            "height": 60,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "micro-bar",
+            "width": 88,
+            "height": 31,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "full-banner",
+            "width": 468,
+            "height": 60,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "panorama",
+            "width": 980,
+            "height": 120,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "top-banner",
+            "width": 930,
+            "height": 180,
+            "category": "web",
+            "platform": "Web"
+        },
+        {
+            "name": "native-ad",
+            "width": 1200,
+            "height": 627,
+            "category": "native",
+            "platform": "Native"
+        },
+        {
+            "name": "interstitial",
+            "width": 320,
+            "height": 480,
+            "category": "mobile",
+            "platform": "Mobile"
+        },
+        {
+            "name": "rewarded-video",
+            "width": 1920,
+            "height": 1080,
+            "category": "video",
+            "platform": "Video"
+        },
+        {
+            "name": "email-header",
+            "width": 600,
+            "height": 200,
+            "category": "email",
+            "platform": "Email"
+        },
+        {
+            "name": "email-banner",
+            "width": 600,
+            "height": 150,
+            "category": "email",
+            "platform": "Email"
+        },
+        {
+            "name": "print-a4",
+            "width": 2480,
+            "height": 3508,
+            "category": "print",
+            "platform": "Print"
+        },
+        {
+            "name": "print-letter",
+            "width": 2550,
+            "height": 3300,
+            "category": "print",
+            "platform": "Print"
+        }
     ]
 }

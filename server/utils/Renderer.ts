@@ -1,6 +1,8 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, createReadStream } from "node:fs";
 import { resolve } from "node:path";
 import puppeteer from "puppeteer";
+import archiver from "archiver";
+import type { Archiver } from "archiver";
 
 export interface RenderSize {
     width: number;
@@ -11,6 +13,7 @@ export interface RenderSize {
 export interface RenderResult {
     name: string;
     path: string;
+    filePath: string;
 }
 
 export class Renderer {
@@ -50,10 +53,50 @@ export class Renderer {
             results.push({
                 name: size.name ?? filename,
                 path: `/output/${filename}`,
+                filePath: filepath,
             });
         }
 
         await browser.close();
         return results;
+    }
+
+    /**
+     * Создает zip-архив с отрендеренными изображениями.
+     *
+     * @param results Результаты рендеринга изображений
+     * @param archiveName Имя архива (без расширения)
+     * @returns Promise<Buffer> Буфер с zip-архивом
+     */
+    static async createArchive(
+        results: RenderResult[],
+        archiveName: string = "banners"
+    ): Promise<Buffer> {
+        return new Promise((resolve, reject) => {
+            const archive = archiver("zip", {
+                zlib: { level: 9 }, // Максимальное сжатие
+            });
+
+            const chunks: Buffer[] = [];
+
+            archive.on("data", (chunk) => {
+                chunks.push(chunk);
+            });
+
+            archive.on("end", () => {
+                resolve(Buffer.concat(chunks));
+            });
+
+            archive.on("error", (err) => {
+                reject(err);
+            });
+
+            // Добавляем файлы в архив
+            for (const result of results) {
+                archive.file(result.filePath, { name: result.name + ".png" });
+            }
+
+            archive.finalize();
+        });
     }
 }
