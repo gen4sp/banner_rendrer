@@ -6,6 +6,10 @@
         "logo1": "/images/logo1.png",
         "logo2": "/images/logo2.png"
     },
+    "templates": [
+        { "name": "Default Orange Diamond", "file": "default.html" },
+        { "name": "Default White Diamond", "file": "default2.html" }
+    ],
     "sizes": [
         { "name": "linkedin", "width": 1200, "height": 628 },
         { "name": "instagram", "width": 628, "height": 1200 },
