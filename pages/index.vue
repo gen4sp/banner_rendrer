@@ -1,6 +1,6 @@
 <template>
     <div class="p-8 space-y-6 max-w-xl mx-auto">
-        <h1 class="text-3xl font-bold mb-6">Banner Renderer</h1>
+        <h1 class="text-3xl font-bold mb-6">Vantage Banner Renderer</h1>
 
         <!-- Выбор шаблона -->
 
